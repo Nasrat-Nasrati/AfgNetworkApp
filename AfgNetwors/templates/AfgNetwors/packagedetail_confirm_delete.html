@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Package Detail - {{ object.name }}{% endblock %}
+
+{% block content %}
+<div class="delete-confirm-container">
+    <h1>Are you sure you want to delete &quot;{{ object.name }}&quot;?</h1>
+
+    <form method="post" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'packagedetail-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

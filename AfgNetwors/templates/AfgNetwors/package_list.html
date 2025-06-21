@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Package List{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; color: #003366; margin-bottom: 20px;">Package List</h2>
+
+<div style="text-align: right; margin-bottom: 15px;">
+    <a href="{% url 'package-create' operator_id=operator_id service_package_id=service_package_id %}" class="button" style="background-color: #007bff;">
+        + Add New Package
+    </a>
+</div>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th style="width: 10%;">No.</th>
+            <th style="width: 60%;">Package Name</th>
+            <th style="width: 30%;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for package in object_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ package.name }}</td>
+            <td>
+                <a href="{% url 'package-detail' operator_id=operator_id service_package_id=service_package_id pk=package.pk %}" class="btn-action">Details</a>
+                <a href="{% url 'package-edit' operator_id=operator_id service_package_id=service_package_id pk=package.pk %}" class="btn-action">Edit</a>
+                <a href="{% url 'package-delete' operator_id=operator_id service_package_id=service_package_id pk=package.pk %}" class="btn-action delete">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" style="text-align: center;">No packages found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'servicepackage-list' operator_id=operator_id %}" class="button" style="background-color: #6c757d;">
+        Back to Service & Packages
+    </a>
+</div>
+
+{% endblock %}

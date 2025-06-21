@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Package Details{% endblock %}
+
+{% block content %}
+  <h2 style="text-align: center; color: #003366; margin-bottom: 20px;">Package Details</h2>
+
+  <div class="detail-card">
+    <p><strong>Package Name:</strong> {{ object.name }}</p>
+
+    <!-- NEW: Show related service and operator -->
+    <p><strong>Service && Package:</strong> {{ object.service_package.name }}</p>
+    <p><strong>Operator:</strong> {{ object.service_package.operator.name }}</p>
+  </div>
+
+  <div class="action-buttons" style="margin-top: 20px;">
+    <a href="{% url 'package-list' operator_id=operator_id service_package_id=service_package_id %}" class="button" style="background-color: #6c757d;">
+      Back to Package List
+    </a>
+
+      <a href="{% url 'packagedetail-create' operator_id=operator_id service_package_id=service_package_id package_id=object.id %}" class="button" style="background-color: #007bff;">
+      Add New Bundle
+    </a>
+
+       <a href="{% url 'packagedetail-list' operator_id=operator_id service_package_id=service_package_id package_id=object.id %}" class="button" style="background-color:rgb(52, 174, 58);">
+        All Bundle
+      </a>
+
+
+  </div>
+{% endblock %}
+

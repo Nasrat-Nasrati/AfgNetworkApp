@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Package Detail - {{ object.name }}{% endblock %}
+
+{% block content %}
+<div class="package-detail-container">
+    <h1 class="package-title">{{ object.name }}</h1>
+
+    <div class="package-info">
+        <p><strong>Price:</strong> {{ object.price }} AFN</p>
+        <p><strong>Activation Code:</strong> {{ object.activation_code }}</p>
+        <p><strong>Deactivation Code:</strong> {{ object.deactivation_code }}</p>
+        <p><strong>Check Balance Code:</strong> {{ object.check_balance_code }}</p>
+    </div>
+
+    <hr style="margin: 30px 0; border-top: 1px solid #ccc;">
+
+    <div class="bundle-context">
+        <h3 style="color: #003366;">Bundle Context Information</h3>
+        <p><strong>Operator:</strong> {{ object.package.service_package.operator.name }}</p>
+        <p><strong>Service:</strong> {{ object.package.service_package.name }}</p>
+        <p><strong>Package:</strong> {{ object.package.name }}</p>
+    </div>
+
+    <div class="package-actions" style="margin-top: 25px;">
+        <a class="btn btn-back" href="{% url 'packagedetail-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}">Back to bandel List</a>
+        <a class="btn btn-back" href="{% url 'package-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id %}">Back to Packages</a>
+
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Operator List{% endblock %}
+
+{% block content %}
+<h2>Operator List</h2>
+
+<a class="button" href="{% url 'operator-create' %}">Add New Operator</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Network Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for operator in object_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'operator-detail' operator.pk %}">{{ operator.name }}</a></td>
+            <td><a href="{% url 'operator-edit' operator.pk %}">Edit</a></td>
+            <td><a href="{% url 'operator-delete' operator.pk %}">Delete</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="text-align:center;">No operators found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

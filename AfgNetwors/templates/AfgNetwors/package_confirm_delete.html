@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Package{% endblock %}
+
+{% block content %}
+  <h2 style="text-align: center; color: #dc3545; margin-bottom: 20px;">Delete Package</h2>
+
+  <div class="confirm-card">
+    <p>Are you sure you want to delete the package "<strong>{{ object.name }}</strong>"?</p>
+
+    <form method="post" style="margin-top: 20px; text-align: center;">
+      {% csrf_token %}
+      <button type="submit" class="button" style="background-color: #dc3545; margin-right: 15px;">Yes, Delete</button>
+      <a href="{% url 'package-detail' operator_id=operator_id service_package_id=service_package_id pk=object.pk %}" class="button" style="background-color: #6c757d;">No, Go Back</a>
+    </form>
+  </div>
+{% endblock %}

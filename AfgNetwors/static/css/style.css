@@ -1,0 +1,1016 @@
+/* Base page styles */
+body {
+    background-color: #f2f2f2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Container for main content */
+.container {
+    max-width: 900px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 30px 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Heading */
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #222;
+    border-bottom: 3px solid #007acc;
+    padding-bottom: 10px;
+}
+
+/* Add new operator button */
+a.button {
+    display: inline-block;
+    background-color: #007acc;
+    color: white;
+    padding: 12px 22px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #005fa3;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+thead th {
+    background-color: #007acc;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 3px solid #005fa3;
+}
+
+tbody td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 15px;
+}
+
+tbody tr:hover {
+    background-color: #f1f9ff;
+}
+
+tbody td a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+tbody td a:hover {
+    color: #005fa3;
+}
+
+/* Empty message style for table */
+tbody tr td[colspan] {
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* for operator details style */
+
+.operator-logo {
+    max-width: 250px;
+    display: block;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.action-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+a.button {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #005fa3;
+}
+
+a.delete-button {
+    background-color: #dc3545; /* Bootstrap danger red */
+}
+
+a.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+/* style of operator form  */
+
+.operator-form {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.operator-form p {
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.operator-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.operator-form input[type="text"],
+.operator-form input[type="file"],
+.operator-form textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.operator-form input[type="text"]:focus,
+.operator-form input[type="file"]:focus,
+.operator-form textarea:focus {
+    border-color: #007acc;
+    outline: none;
+}
+
+button.submit-button {
+    margin-top: 15px;
+    background-color: #007acc;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.submit-button:hover {
+    background-color: #005fa3;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #6c757d; /* gray */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* operator delete style  */
+
+.delete-form {
+    margin-top: 20px;
+}
+
+button.delete-button {
+    background-color: #dc3545; /* Bootstrap’s red */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.delete-button:hover {
+    background-color: #b52b37;
+}
+
+.cancel-button {
+    display: inline-block;
+    margin-left: 15px;
+    background-color: #6c757d; /* gray */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* create services for operator  */
+/* Form container styling */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form fields */
+form p {
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="file"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #007acc;
+    outline: none;
+}
+
+/* Save and Back buttons */
+.button {
+    display: inline-block;
+    background-color: #007acc;
+    color: white;
+    padding: 12px 22px;
+    margin-top: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #005fa3;
+}
+
+.back-button {
+    margin-left: 15px;
+    background-color: #6c757d;
+}
+
+.back-button:hover,
+.back-button:focus {
+    background-color: #565e64;
+}
+
+
+/* services list style  */
+/* Container & typography inherited from base.css */
+
+/* Headings */
+h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #007acc;
+    padding-bottom: 8px;
+}
+
+/* Buttons */
+a.button {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+a.button:hover {
+    background-color: #005fa3;
+}
+
+/* Package list */
+ul.package-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 30px 0;
+}
+
+ul.package-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Links inside list items */
+ul.package-list li a {
+    color: #007acc;
+    text-decoration: none;
+    margin-left: 12px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+ul.package-list li a:hover {
+    color: #005fa3;
+}
+
+/* Empty message */
+ul.package-list li.empty-message {
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    padding: 20px 0;
+    border: none;
+    background: none;
+}
+
+/* Back button style */
+a.back-button {
+    background-color: #6c757d;
+}
+
+a.back-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* services details style  */
+/* Container styles already in base.css */
+
+/* Heading */
+h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #007acc;
+    padding-bottom: 10px;
+}
+
+/* Detail paragraphs */
+p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #444;
+}
+
+/* Action links container */
+.action-links {
+    margin-top: 30px;
+}
+
+/* Buttons */
+a.button {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 12px;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #005fa3;
+}
+
+/* Delete button style */
+a.delete-button {
+    background-color: #dc3545;
+}
+
+a.delete-button:hover {
+    background-color: #a71d2a;
+}
+
+/* Back button style */
+a.back-button {
+    background-color: #6c757d;
+}
+
+a.back-button:hover {
+    background-color: #565e64;
+}
+
+/* services delete style  */
+/* Confirm Delete Form */
+.confirm-delete-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Buttons */
+button.button,
+a.button {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+/* Delete button style */
+button.delete-button {
+    background-color: #dc3545; /* Bootstrap red */
+    color: white;
+}
+
+button.delete-button:hover {
+    background-color: #b02a37;
+}
+
+/* Cancel button style */
+a.cancel-button {
+    background-color: #6c757d; /* Bootstrap gray */
+    color: white;
+}
+
+a.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* create packages  */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 16px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form select,
+form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button.button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.button:hover {
+    background-color: #218838;
+}
+
+a.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    opacity: 0.9;
+}
+
+
+/* package list style  */
+.package-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.package-item {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.package-item .actions {
+    font-size: 14px;
+}
+
+.action-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.no-results {
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+}
+
+.button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+/* packahge details styles */
+.detail-card {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+}
+
+.detail-card p {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.action-buttons {
+    text-align: center;
+}
+
+.action-buttons .button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons .button:hover {
+    opacity: 0.9;
+}
+
+/* packages delete styles */
+.confirm-card {
+    background: #fff5f5;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.15);
+    font-size: 16px;
+    color: #721c24;
+}
+
+.confirm-card p {
+    margin-bottom: 20px;
+}
+
+button.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.button:hover {
+    background-color: #b02a37;
+}
+
+a.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #565e64;
+}
+
+/* package details details list  */
+.detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.detail-actions {
+    font-size: 14px;
+}
+
+.action-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.no-results {
+    color: #777;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+
+/* create details details of packages  */
+/* Form container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form heading */
+.form-container h1 {
+    margin-bottom: 25px;
+    color: #003366;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* Form elements */
+.package-detail-form p {
+    margin-bottom: 18px;
+}
+
+.package-detail-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.package-detail-form input[type="text"],
+.package-detail-form input[type="number"],
+.package-detail-form textarea,
+.package-detail-form select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.8px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.package-detail-form input[type="text"]:focus,
+.package-detail-form input[type="number"]:focus,
+.package-detail-form textarea:focus,
+.package-detail-form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0,123,255,0.25);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #565e64;
+}
+
+
+/* package detail details details  */
+.package-detail-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #f9fafb;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.package-title {
+    font-size: 2.5rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 8px;
+}
+
+.package-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+.package-info strong {
+    color: #222;
+    width: 180px;
+    display: inline-block;
+}
+
+.package-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.package-actions .btn {
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #007bff;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #a71d2a;
+}
+
+.btn-back {
+    background-color: #6c757d;
+}
+
+.btn-back:hover {
+    background-color: #495057;
+}
+
+/* details deatils package delete style  */
+
+.delete-confirm-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px 35px;
+    background-color: #fff3f3;
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(220, 53, 69, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #721c24;
+    text-align: center;
+}
+
+.delete-confirm-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.delete-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.delete-form .btn {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #495057;
+}
+
+/* package list style table  */
+
+/* package list style tables with full borders */
+.styled-table {
+    width: 100%;
+    border: 1px solid #ccc; /* OUTER BORDER */
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #ccc; /* CELL BORDERS */
+    text-align: left;
+}
+
+.styled-table thead {
+    background-color: #003366;
+    color: white;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Button styles */
+.btn-action {
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.btn-action:hover {
+    background-color: #0056b3;
+}
+
+.btn-action.delete {
+    background-color: #dc3545;
+}
+
+.btn-action.delete:hover {
+    background-color: #b52a37;
+}
+
+
+
+
+
+
+
+
+
+

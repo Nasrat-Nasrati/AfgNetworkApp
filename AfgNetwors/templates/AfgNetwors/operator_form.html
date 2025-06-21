@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}Edit Operator{% else %}Add Operator{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>{% if object %}Edit Operator{% else %}Add Operator{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data" class="operator-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button submit-button">Save</button>
+</form>
+
+<a class="button back-button" href="{% url 'operator-list' %}">Back to List</a>
+{% endblock %}

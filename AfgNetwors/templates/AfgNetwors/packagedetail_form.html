@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if view.object and view.object.pk %}
+        Edit Package Detail #{{ view.object.pk }}
+    {% else %}
+        Create New Package Detail
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>
+        {% if view.object and view.object.pk %}
+            Edit Package Detail #{{ view.object.pk }}
+        {% else %}
+            Create New Package Detail
+        {% endif %}
+    </h1>
+
+    <form method="post" class="package-detail-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'packagedetail-list' operator_id=operator_id service_package_id=service_package_id package_id=package_id %}" class="btn btn-secondary">Back to list</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}Edit Service Package{% else %}Add New Service && Package{% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>{% if object %}Edit Service && Package{% else %}Add New Service && Package{% endif %}</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="button">Save</button>
+    </form>
+
+    <a class="button back-button" href="{% if object %}{% url 'servicepackage-detail' object.pk %}{% else %}{% url 'servicepackage-list' operator_id=operator_id %}{% endif %}">
+        Back to Services list
+    </a>
+
+     <a class="button back-button" href="{% url 'operator-detail' pk=operator_id %}">
+    Back to Operator Detail
+</a>
+
+{% endblock %}

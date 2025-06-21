@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Operator Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            direction: ltr;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #003366;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        a.button {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        a.button:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AfgNetwork Application</h1>
+</header>
+
+<nav>
+    <a href="{% url 'operator-list' %}">Home</a>
+    <a href="#">Help</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<main>
+    <div class="container">
+        {% block content %}
+        <!-- Page-specific content -->
+        {% endblock %}
+    </div>
+</main>
+
+<footer>
+     <p>&copy; 2025 - All rights reserved | Developed by Nasrat Nasrati</p>
+</footer>
+
+</body>
+</html>

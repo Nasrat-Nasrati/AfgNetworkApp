@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Package Details List{% endblock %}
+
+{% block content %}
+  {% if error_message %}
+    <p style="color: red; text-align: center; font-weight: bold;">{{ error_message }}</p>
+  {% else %}
+    <h2 style="text-align: center; color: #003366; margin-bottom: 20px;">
+      Bandels of: {{ package.name }}
+    </h2>
+
+    <div style="text-align: right; margin-bottom: 15px;">
+      <a href="{% url 'packagedetail-create' operator_id=operator_id service_package_id=service_package_id package_id=package_id %}" class="button" style="background-color: #007bff;">
+        + Create New Bandel
+      </a>
+    </div>
+
+    <ul class="detail-list">
+      {% for detail in object_list %}
+        <li class="detail-item">
+          <div class="detail-header">
+            <strong>{{ detail.name }}</strong>
+            <span class="price">{{ detail.price }} AFN</span>
+          </div>
+          <div class="detail-actions">
+            <a href="{% url 'packagedetail-detail' operator_id=operator_id service_package_id=service_package_id package_id=package_id pk=detail.pk %}" class="action-link">View</a> |
+            <a href="{% url 'packagedetail-edit' operator_id=operator_id service_package_id=service_package_id package_id=package_id pk=detail.pk %}" class="action-link">Edit</a> |
+            <a href="{% url 'packagedetail-delete' operator_id=operator_id service_package_id=service_package_id package_id=package_id pk=detail.pk %}" class="action-link" style="color: red;">Delete</a>
+          </div>
+        </li>
+      {% empty %}
+        <li class="no-results" style="text-align:center; color: #666;">No bandels found.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
+

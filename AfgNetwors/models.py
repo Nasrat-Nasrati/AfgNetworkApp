@@ -11,7 +11,7 @@ class Operator(models.Model):
 
 
 class ServicePackage(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     operator = models.ForeignKey(Operator, on_delete=models.CASCADE, related_name='services')
 
     def __str__(self):
@@ -19,7 +19,7 @@ class ServicePackage(models.Model):
 
 
 class Package(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     service_package = models.ForeignKey(ServicePackage, on_delete=models.CASCADE, related_name='packages')
 
     def __str__(self):
@@ -28,9 +28,9 @@ class Package(models.Model):
 
 class PackageDetail(models.Model):
     package = models.ForeignKey(Package, on_delete=models.CASCADE, related_name='details')
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    activation_code = models.CharField(max_length=50, unique=True)
+    activation_code = models.CharField(max_length=50)
     deactivation_code = models.CharField(max_length=50)
     check_balance_code = models.CharField(max_length=50)
     def __str__(self):

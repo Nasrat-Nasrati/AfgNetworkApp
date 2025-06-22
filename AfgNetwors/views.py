@@ -5,6 +5,9 @@ from AfgNetwors.models import PackageDetail as PackageDetailModel  # جلوگی�
 # در بالای views.py اضافه کنید
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from rest_framework import viewsets
+from .serializers import OperatorSerializer, ServicePackageSerializer, PackageSerializer, PackageDetailSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 
@@ -467,3 +470,33 @@ class PackageDetailDelete(DeleteView):
             'service_package_id': self.kwargs.get('service_package_id'),
             'package_id': self.kwargs.get('package_id'),
         })
+
+
+
+
+# this is all about serializer views 
+# ViewSets
+
+class OperatorViewSet(viewsets.ModelViewSet):
+    queryset = Operator.objects.all()
+    serializer_class = OperatorSerializer
+
+class ServicePackageViewSet(viewsets.ModelViewSet):
+    queryset = ServicePackage.objects.all()
+    serializer_class = ServicePackageSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['operator']  # اینجا کلید فیلتر روی operator است
+
+class PackageViewSet(viewsets.ModelViewSet):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['service_package']  # اضافه کردن فیلتر بر اساس service_package
+
+class PackageDetailViewSet(viewsets.ModelViewSet):
+    queryset = PackageDetailModel.objects.all()
+    serializer_class = PackageDetailSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['package']  # حالا فیلتر روی package فعال است

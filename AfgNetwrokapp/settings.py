@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 
     # Your custom app
     'AfgNetwors',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -112,4 +113,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# used for showing data to the api 
+ALLOWED_HOSTS = ['*']
+ #my custom reset framwork
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    # سایر تنظیمات
+}
 

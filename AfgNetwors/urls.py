@@ -1,5 +1,15 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from . import views
+
+# this is all route of my serializer application 
+# ✅ 1. ساخت router برای ViewSetها
+router = DefaultRouter()
+router.register(r'api/operators', views.OperatorViewSet)
+router.register(r'api/service-packages', views.ServicePackageViewSet)
+router.register(r'api/packages', views.PackageViewSet)
+router.register(r'api/package-details', views.PackageDetailViewSet)
+
 
 urlpatterns = [
     # Operator URLs
@@ -63,6 +73,8 @@ urlpatterns = [
         views.PackageDetailDelete.as_view(),
         name='packagedetail-delete'
     ),
+
+     path('', include(router.urls)), 
 
 ]
 

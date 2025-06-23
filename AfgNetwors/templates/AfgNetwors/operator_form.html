@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}
     {% if object %}Edit Operator{% else %}Add Operator{% endif %}
@@ -9,7 +10,17 @@
 
 <form method="post" enctype="multipart/form-data" class="operator-form">
     {% csrf_token %}
-    {{ form.as_p }}
+    
+    {% for field in form %}
+        <p>
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field|add_class:"form-control" }}
+            {% if field.errors %}
+                <div class="error">{{ field.errors }}</div>
+            {% endif %}
+        </p>
+    {% endfor %}
+
     <button type="submit" class="button submit-button">Save</button>
 </form>
 

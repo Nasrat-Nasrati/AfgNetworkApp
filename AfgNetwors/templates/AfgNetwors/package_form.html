@@ -1,4 +1,41 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+    {% if form.instance.pk %}Edit Package{% else %}Add New Package{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; color: #003366; margin-bottom: 20px;">
+    {% if form.instance.pk %}Edit Package{% else %}Add New Package{% endif %}
+</h2>
+
+<form method="post" class="form" style="max-width: 600px; margin: auto;">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="id_name" class="form-label"><strong>Package Name</strong></label>
+        {{ form.name|add_class:"form-control" }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_type" class="form-label"><strong>Package Type</strong></label>
+        {{ form.type|add_class:"form-select" }}
+    </div>
+
+    <div style="margin-top: 20px; text-align: right;">
+        <button type="submit" class="btn btn-primary">💾 Save</button>
+        <a href="{% url 'package-list' operator_id=operator_id service_package_id=service_package_id %}" class="btn btn-danger" style="margin-left: 10px;">
+            Cancel & Back
+        </a>
+    </div>
+</form>
+{% endblock %}
+
+
+
+{% comment %} {% extends 'base.html' %}
 
 {% block title %}
     {% if form.instance.pk %}Edit Package{% else %}Add New Package{% endif %}
@@ -22,4 +59,4 @@
         </a>
     </div>
 </form>
-{% endblock %}
+{% endblock %} {% endcomment %}

@@ -74,6 +74,8 @@ urlpatterns = [
         name='packagedetail-delete'
     ),
 
+
+
      path('', include(router.urls)), 
 
 ]

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     # Your custom app
     'AfgNetwors',
     'rest_framework',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

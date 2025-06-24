@@ -12,6 +12,7 @@ class Operator(models.Model):
 
 class ServicePackage(models.Model):
     name = models.CharField(max_length=100)
+    is_services = models.BooleanField(default=False)
     operator = models.ForeignKey(Operator, on_delete=models.CASCADE, related_name='services')
 
     def __str__(self):

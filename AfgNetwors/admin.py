@@ -10,9 +10,9 @@ class OperatorAdmin(admin.ModelAdmin):
 
 @admin.register(ServicePackage)
 class ServicePackageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'operator')
+    list_display = ('name', 'operator','is_services')
     list_filter = ('operator',)
-    search_fields = ('name',)
+    search_fields = ('name','is_services')
 
 
 @admin.register(Package)

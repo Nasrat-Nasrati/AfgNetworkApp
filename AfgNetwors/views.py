@@ -50,6 +50,7 @@ class OperatorDelete(DeleteView):
 # ===============================
 class ServicePackageList(ListView):
     model = ServicePackage
+    fields = ['name', 'is_services']
     template_name = 'AfgNetwors/servicepackage_list.html'
 
     def get_queryset(self):
@@ -63,7 +64,7 @@ class ServicePackageList(ListView):
 
 class ServicePackageCreate(CreateView):
     model = ServicePackage
-    fields = ['name']
+    fields = ['name','is_services']
     template_name = 'AfgNetwors/servicepackage_form.html'
 
     def form_valid(self, form):
@@ -86,7 +87,7 @@ class ServicePackageDetail(DetailView):
 
 class ServicePackageUpdate(UpdateView):
     model = ServicePackage
-    fields = ['name']
+    fields = ['name','is_services']
     template_name = 'AfgNetwors/servicepackage_form.html'
 
     def get_success_url(self):
@@ -305,7 +306,6 @@ class PackageDetailDelete(DeleteView):
 
 
 # Updated ViewSets for API (DRF)
-list
 
 
 class OperatorViewSet(viewsets.ModelViewSet):

@@ -37,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'AfgNetwrokapp.urls'
+ROOT_URLCONF = 'AfgNetworkApp.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'AfgNetwrokapp.wsgi.application'
+WSGI_APPLICATION = 'AfgNetworkApp.wsgi.application'
 
 
 # Database

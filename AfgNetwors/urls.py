@@ -1,15 +1,5 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from . import views
-
-# this is all route of my serializer application 
-# ✅ 1. ساخت router برای ViewSetها
-router = DefaultRouter()
-router.register(r'api/operators', views.OperatorViewSet)
-router.register(r'api/service-packages', views.ServicePackageViewSet)
-router.register(r'api/packages', views.PackageViewSet)
-router.register(r'api/package-details', views.PackageDetailViewSet)
-
 
 urlpatterns = [
     # Operator URLs
@@ -22,12 +12,14 @@ urlpatterns = [
     # ServicePackage URLs
     path('operators/<int:operator_id>/service-packages/', views.ServicePackageList.as_view(), name='servicepackage-list'),
     path('operators/<int:operator_id>/service-packages/create/', views.ServicePackageCreate.as_view(), name='servicepackage-create'),
-    path('service-packages/<int:pk>/', views.ServicePackageDetail.as_view(), name='servicepackage-detail'),
-    path('service-packages/<int:pk>/edit/', views.ServicePackageUpdate.as_view(), name='servicepackage-edit'),
-    path('service-packages/<int:pk>/delete/', views.ServicePackageDelete.as_view(), name='servicepackage-delete'),
+    path('operators/<int:operator_id>/service-packages/<int:pk>/', views.ServicePackageDetail.as_view(), name='servicepackage-detail'),
+    path('operators/<int:operator_id>/service-packages/<int:pk>/edit/', views.ServicePackageUpdate.as_view(), name='servicepackage-edit'),
+    path('operators/<int:operator_id>/service-packages/<int:pk>/delete/', views.ServicePackageDelete.as_view(), name='servicepackage-delete'),
 
     # Package URLs
-   path(
+   
+
+    path(
         'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/',
         views.PackageList.as_view(),
         name='package-list'
@@ -37,47 +29,48 @@ urlpatterns = [
         views.PackageCreate.as_view(),
         name='package-create'
     ),
-    path('operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/', views.PackageDetail.as_view(), name='package-detail'),
-    path('operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/edit/', views.PackageUpdate.as_view(), name='package-edit'),
-    path('operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/delete/', views.PackageDelete.as_view(), name='package-delete'),
+    path(
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/',
+        views.PackageDetail.as_view(),
+        name='package-detail'  # برای نمایش جزئیات پکیج
+    ),
+    path(
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/edit/',
+        views.PackageUpdate.as_view(),
+        name='package-edit'
+    ),
+    path(
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:pk>/delete/',
+        views.PackageDelete.as_view(),
+        name='package-delete'
+    ),
 
-   # ===== PackageDetail URLs =====
 
+    # ✅ Bandle (PackageDetail) URLs (rewritten cleanly)
 
     path(
-        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/list/',
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/bandels/',
         views.PackageDetailList.as_view(),
-        name='packagedetail-list'
+        name='bandel-list'
     ),
-
     path(
-        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/details/create/',
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/bandels/create/',
         views.PackageDetailCreate.as_view(),
-        name='packagedetail-create'
+        name='bandel-create'
     ),
-
     path(
-        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/details/<int:pk>/',
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/bandels/<int:pk>/',
         views.PackageDetailView.as_view(),
-        name='packagedetail-detail'
+        name='bandel-detail'
     ),
-
     path(
-        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/details/<int:pk>/edit/',
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/bandels/<int:pk>/edit/',
         views.PackageDetailUpdate.as_view(),
-        name='packagedetail-edit'
+        name='bandel-edit'
     ),
-
     path(
-        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/details/<int:pk>/delete/',
+        'operators/<int:operator_id>/service-packages/<int:service_package_id>/packages/<int:package_id>/bandels/<int:pk>/delete/',
         views.PackageDetailDelete.as_view(),
-        name='packagedetail-delete'
+        name='bandel-delete'
     ),
-
-
-
-     path('', include(router.urls)), 
-
 ]
-
-

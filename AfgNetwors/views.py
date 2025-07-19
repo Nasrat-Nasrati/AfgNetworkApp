@@ -8,7 +8,6 @@ from AfgNetwors.models import PackageDetail as PackageDetailModel  # جلوگی�
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
-from .serializers import OperatorSerializer, ServicePackageSerializer, PackageSerializer, PackageDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -84,6 +83,11 @@ class ServicePackageDetail(DetailView):
     model = ServicePackage
     template_name = 'AfgNetwors/servicepackage_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['operator_id'] = self.kwargs['operator_id']
+        return context
+
 
 class ServicePackageUpdate(UpdateView):
     model = ServicePackage
@@ -91,7 +95,11 @@ class ServicePackageUpdate(UpdateView):
     template_name = 'AfgNetwors/servicepackage_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('servicepackage-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('servicepackage-detail', kwargs={
+            'operator_id': self.object.operator_id,  # ضروری
+            'pk': self.object.pk
+    })
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -103,8 +111,17 @@ class ServicePackageDelete(DeleteView):
     model = ServicePackage
     template_name = 'AfgNetwors/servicepackage_confirm_delete.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['operator_id'] = self.object.operator_id
+        return context
+
     def get_success_url(self):
-        return reverse_lazy('servicepackage-list', kwargs={'operator_id': self.object.operator.pk})
+        return reverse_lazy('servicepackage-list', kwargs={
+            'operator_id': self.object.operator.pk
+        })
+
+
 
 
 # ===============================
@@ -220,10 +237,10 @@ class PackageDetailList(ListView):
         return context
 
 
-
 class PackageDetailCreate(CreateView):
     model = PackageDetailModel
-    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code', 'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
+    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code',
+              'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
     template_name = 'AfgNetwors/packagedetail_form.html'
 
     def dispatch(self, request, *args, **kwargs):
@@ -242,7 +259,8 @@ class PackageDetailCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('packagedetail-list', kwargs={
+        # اینجا نام url رو اصلاح کردیم به bandel-list
+        return reverse('bandel-list', kwargs={
             'operator_id': self.kwargs['operator_id'],
             'service_package_id': self.kwargs['service_package_id'],
             'package_id': self.kwargs['package_id'],
@@ -263,7 +281,8 @@ class PackageDetailView(DetailView):
 
 class PackageDetailUpdate(UpdateView):
     model = PackageDetailModel
-    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code', 'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
+    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code',
+              'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
     template_name = 'AfgNetwors/packagedetail_form.html'
 
     def get_context_data(self, **kwargs):
@@ -274,7 +293,7 @@ class PackageDetailUpdate(UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('packagedetail-detail', kwargs={
+        return reverse_lazy('bandel-detail', kwargs={
             'operator_id': self.kwargs['operator_id'],
             'service_package_id': self.kwargs['service_package_id'],
             'package_id': self.kwargs['package_id'],
@@ -294,43 +313,8 @@ class PackageDetailDelete(DeleteView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('packagedetail-list', kwargs={
+        return reverse_lazy('bandel-list', kwargs={
             'operator_id': self.kwargs['operator_id'],
             'service_package_id': self.kwargs['service_package_id'],
             'package_id': self.kwargs['package_id'],
         })
-
-
-
-
-
-
-# Updated ViewSets for API (DRF)
-
-
-class OperatorViewSet(viewsets.ModelViewSet):
-    queryset = Operator.objects.all()
-    serializer_class = OperatorSerializer
-
-
-class ServicePackageViewSet(viewsets.ModelViewSet):
-    queryset = ServicePackage.objects.all()
-    serializer_class = ServicePackageSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['operator']
-
-
-class PackageViewSet(viewsets.ModelViewSet):
-    queryset = Package.objects.all()
-    serializer_class = PackageSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['service_package', ]  
-
-
-
-class PackageDetailViewSet(viewsets.ModelViewSet):
-    queryset = PackageDetailModel.objects.all()
-    serializer_class = PackageDetailSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['package']
-

@@ -28,8 +28,9 @@
     </div>
 
     <div class="package-actions" style="margin-top: 25px;">
-        <a class="btn btn-back" href="{% url 'packagedetail-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}">Back to Bundle List</a>
-        <a class="btn btn-back" href="{% url 'package-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id %}">Back to Packages</a>
-    </div>
+    <a class="btn btn-back" href="{% url 'bandel-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}">Back to Bundle List</a>
+    <a class="btn btn-back" href="{% url 'package-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id %}">Back to Packages</a>
+</div>
+
 </div>
 {% endblock %}

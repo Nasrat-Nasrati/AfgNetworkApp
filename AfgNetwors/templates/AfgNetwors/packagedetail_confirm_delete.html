@@ -9,7 +9,8 @@
     <form method="post" class="delete-form">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Yes, Delete</button>
-        <a href="{% url 'packagedetail-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'bandel-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}" class="btn btn-secondary">Cancel</a>
+
     </form>
 </div>
 {% endblock %}

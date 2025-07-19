@@ -1,36 +1,63 @@
 {% extends 'base.html' %}
 
-{% block title %}Service And Package List{% endblock %}
+{% block title %}Service and Package List{% endblock %}
 
 {% block content %}
-<h2>Service && Package List</h2>
+    <h2>Service & Package List</h2>
 
-<a class="button" href="{% url 'servicepackage-create' operator_id=operator_id %}">Add New Services && Packages</a>
+    <!-- دکمه افزودن سرویس جدید -->
+    <a class="button" href="{% url 'servicepackage-create' operator_id=operator_id %}">
+        Add New Services & Packages
+    </a>
 
-<table class="package-table">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>Service Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for package in object_list %}
+    <!-- جدول نمایش لیست -->
+    <table class="package-table">
+        <thead>
             <tr>
-                <td>{{ forloop.counter }}</td>
-                <td><a href="{% url 'servicepackage-detail' package.pk %}">{{ package.name }}</a></td>
-                <td><a href="{% url 'servicepackage-edit' package.pk %}" class="edit-link">Edit</a></td>
-                <td><a href="{% url 'servicepackage-delete' package.pk %}" class="delete-link">Delete</a></td>
+                <th>#</th>
+                <th>Service Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
-        {% empty %}
-            <tr>
-                <td colspan="4" class="empty-message">No packages found.</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for package in object_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    
+                    <!-- لینک صفحه جزئیات -->
+                    <td>
+                        <a href="{% url 'servicepackage-detail' operator_id=operator_id pk=package.pk %}">
+                            {{ package.name }}
+                        </a>
+                    </td>
 
-<a class="button back-button" href="{% url 'operator-list' %}">Back to Operators</a>
+                    <!-- دکمه ویرایش -->
+                    <td>
+                        <a href="{% url 'servicepackage-edit' operator_id=operator_id pk=package.pk %}" class="edit-link">
+                            Edit
+                        </a>
+                    </td>
+
+                    <!-- دکمه حذف -->
+                    <td>
+                        <a href="{% url 'servicepackage-delete' operator_id=operator_id pk=package.pk %}" class="delete-link">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="empty-message">
+                        No packages found.
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- برگشت به لیست اپراتورها -->
+    <a class="button back-button" href="{% url 'operator-list' %}">
+        Back to Operators
+    </a>
 {% endblock %}

@@ -3,17 +3,21 @@
 {% block title %}Service Package Details - {{ object.name }}{% endblock %}
 
 {% block content %}
-<h2>Service && Package Details of: {{ object.name }}</h2>
+<h2>Service & Package Details of: {{ object.name }}</h2>
 
-<p><strong>Sevices && Package Name:</strong> {{ object.name }}</p>
-<p><strong>Is_services:</strong> {{ object.is_services }}</p>
+<p><strong>Services & Package Name:</strong> {{ object.name }}</p>
+<p><strong>Is Services:</strong> {{ object.is_services }}</p>
 <p><strong>Operator:</strong> {{ object.operator.name }}</p>
 
 <div class="action-links">
-  
-    <a class="button" href="{% url 'package-create' operator_id=object.operator.pk service_package_id=object.pk %}">Create Packages</a>
-    <a class="button back-button" href="{% url 'servicepackage-list' operator_id=object.operator.pk %}">Back to Services && package List</a>
-    <a class="button forward-button" href="{% url 'package-list' operator_id=object.operator.pk service_package_id=object.pk %}">All Packages</a>
-
+    <a class="button" href="{% url 'package-create' operator_id=object.operator.pk service_package_id=object.pk %}">
+        Create Package
+    </a>
+    <a class="button forward-button" href="{% url 'package-list' operator_id=object.operator.pk service_package_id=object.pk %}">
+        All Packages
+    </a>
+    <a class="button back-button" href="{% url 'servicepackage-list' operator_id=object.operator.pk %}">
+        Back to Services & Packages List
+    </a>
 </div>
 {% endblock %}

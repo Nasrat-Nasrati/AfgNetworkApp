@@ -9,6 +9,7 @@
 <form method="post" class="confirm-delete-form">
     {% csrf_token %}
     <button type="submit" class="button delete-button">Yes, Delete</button>
-    <a href="{% url 'servicepackage-detail' object.pk %}" class="button cancel-button">Cancel</a>
+    <a href="{% url 'servicepackage-detail' operator_id=operator_id pk=object.pk %}" class="button cancel-button">Cancel</a>
+
 </form>
 {% endblock %}

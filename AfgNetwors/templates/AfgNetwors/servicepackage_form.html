@@ -10,28 +10,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="form-container shadow-lg p-6 bg-white rounded-lg max-w-2xl mx-auto mt-10">
-    <h2 class="text-3xl font-semibold text-center mb-6 text-gray-800">
+<div class="form-container shadow-lg p-6 bg-white rounded-2xl max-w-2xl mx-auto mt-10">
+    <h2 class="text-3xl font-bold text-center mb-6 text-indigo-700">
         {% if object %}
-            Edit Service & Package
+            ✏️ Edit Service & Package
         {% else %}
-            Add New Service & Package
+            ➕ Add New Service & Package
         {% endif %}
     </h2>
 
-    <form method="post" enctype="multipart/form-data" class="space-y-5">
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
         {% csrf_token %}
 
         {% for field in form %}
             <div class="form-group">
-                <label for="{{ field.id_for_label }}" class="block mb-1 font-medium text-gray-700">
+                <label for="{{ field.id_for_label }}" class="block mb-1 font-semibold text-gray-800">
                     {{ field.label }}
                     {% if field.field.required %}
                         <span class="text-red-500">*</span>
                     {% endif %}
                 </label>
 
-                {% render_field field class="form-control w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" %}
+                {% render_field field class="form-control w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" %}
 
                 {% if field.help_text %}
                     <p class="text-sm text-gray-500 mt-1">{{ field.help_text }}</p>
@@ -43,20 +43,23 @@
             </div>
         {% endfor %}
 
-        <div class="flex justify-between items-center pt-4">
-            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow-md transition">
-                Save
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6">
+            <!-- Submit Button -->
+            <button type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg transition duration-300 ease-in-out w-full sm:w-auto">
+                💾 Save
             </button>
 
-            <div class="space-x-3">
-                <a href="{% if object %}{% url 'servicepackage-detail' object.pk %}{% else %}{% url 'servicepackage-list' operator_id=operator_id %}{% endif %}" 
-                   class="inline-block bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded shadow transition">
-                    Back to Services list
+            <!-- Navigation Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <a href="{% if object %}{% url 'servicepackage-detail' operator_id=operator_id pk=object.pk %}{% else %}{% url 'servicepackage-list' operator_id=operator_id %}{% endif %}"
+                   class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-5 py-2.5 rounded-xl shadow transition text-center w-full sm:w-auto">
+                    ← Back to Services List
                 </a>
 
-                <a href="{% url 'operator-detail' pk=operator_id %}" 
-                   class="inline-block bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded shadow transition">
-                    Back to Operator Detail
+                <a href="{% url 'operator-detail' pk=operator_id %}"
+                   class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-5 py-2.5 rounded-xl shadow transition text-center w-full sm:w-auto">
+                    ↩ Back to Operator Detail
                 </a>
             </div>
         </div>

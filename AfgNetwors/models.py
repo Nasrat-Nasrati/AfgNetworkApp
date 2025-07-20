@@ -45,5 +45,10 @@ class PackageDetail(models.Model):
         return f"{self.name} - {self.price} AFN"
     
 
+class Gallery(models.Model):
+    operator = models.ForeignKey(Operator, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ImageField(upload_to='gallery/')
+    caption = models.CharField(max_length=255, blank=True, null=True)  # عنوان اختیاری تصویر
 
-
+    def __str__(self):
+        return f"Image for {self.operator.name}"

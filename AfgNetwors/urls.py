@@ -73,4 +73,14 @@ urlpatterns = [
         views.PackageDetailDelete.as_view(),
         name='bandel-delete'
     ),
+
+
+        # ✅ Isolated Gallery URLs
+    path('gallery/', views.GalleryList.as_view(), name='gallery-list'),
+    path('gallery/create/', views.GalleryCreate.as_view(), name='gallery-create'),
+    path('gallery/<int:pk>/', views.GalleryDetail.as_view(), name='gallery-detail'),
+    path('gallery/<int:pk>/edit/', views.GalleryUpdate.as_view(), name='gallery-edit'),
+    path('gallery/<int:pk>/delete/', views.GalleryDelete.as_view(), name='gallery-delete'),
+
+
 ]

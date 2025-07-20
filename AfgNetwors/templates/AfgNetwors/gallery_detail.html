@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Gallery Detail{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: auto; padding: 20px;">
+    <h2 style="text-align: center;">Image Details</h2>
+
+    <div style="text-align: center;">
+        <img src="{{ object.image.url }}" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Image" />
+    </div>
+
+    <div style="margin-top: 20px;">
+        <p><strong>Operator:</strong> {{ object.operator.name }}</p>
+        <p><strong>Caption:</strong> {{ object.caption|default:"No caption provided." }}</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'gallery-edit' object.pk %}" class="btn">✏️ Edit</a> |
+        <a href="{% url 'gallery-delete' object.pk %}" class="btn" style="color: red;">🗑 Delete</a> |
+        <a href="{% url 'gallery-list' %}" class="btn">⬅ Back to Gallery</a>
+    </div>
+</div>
+{% endblock %}

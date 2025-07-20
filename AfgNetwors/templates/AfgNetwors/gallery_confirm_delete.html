@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Delete Gallery Image{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; background-color: #fff3f3;">
+    <h2 style="text-align: center; color: red;">Confirm Deletion</h2>
+
+    <p style="text-align: center;">
+        Are you sure you want to delete this image?
+    </p>
+
+    <div style="text-align: center;">
+        <img src="{{ object.image.url }}" style="max-width: 300px; border-radius: 6px;" alt="Image" />
+        <p><strong>Operator:</strong> {{ object.operator.name }}</p>
+        <p><strong>Caption:</strong> {{ object.caption|default:"No caption" }}</p>
+    </div>
+
+    <form method="post" style="text-align: center; margin-top: 20px;">
+        {% csrf_token %}
+        <button type="submit" style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px;">Yes, Delete</button>
+        <a href="{% url 'gallery-list' %}" style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% endblock %}

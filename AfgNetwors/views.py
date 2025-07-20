@@ -2,7 +2,7 @@
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Operator, ServicePackage, Package
+from .models import Operator, ServicePackage, Package,Gallery
 from AfgNetwors.models import PackageDetail as PackageDetailModel  # جلوگیری از تداخل با نام ویو
 # در بالای views.py اضافه کنید
 from django.urls import reverse
@@ -318,3 +318,42 @@ class PackageDetailDelete(DeleteView):
             'service_package_id': self.kwargs['service_package_id'],
             'package_id': self.kwargs['package_id'],
         })
+    
+
+
+
+
+
+# ===============================
+# ✅ Isolated Gallery Views
+# ===============================
+
+class GalleryList(ListView):
+    model = Gallery
+    paginate_by = 6   # تعداد تصاویر در هر صفحه
+    template_name = 'AfgNetwors/gallery_list.html'
+
+
+class GalleryCreate(CreateView):
+    model = Gallery
+    fields = ['operator', 'image', 'caption']
+    template_name = 'AfgNetwors/gallery_form.html'
+    success_url = reverse_lazy('gallery-list')
+
+
+class GalleryDetail(DetailView):
+    model = Gallery
+    template_name = 'AfgNetwors/gallery_detail.html'
+
+
+class GalleryUpdate(UpdateView):
+    model = Gallery
+    fields = ['operator', 'image', 'caption']
+    template_name = 'AfgNetwors/gallery_form.html'
+    success_url = reverse_lazy('gallery-list')
+
+
+class GalleryDelete(DeleteView):
+    model = Gallery
+    template_name = 'AfgNetwors/gallery_confirm_delete.html'
+    success_url = reverse_lazy('gallery-list')

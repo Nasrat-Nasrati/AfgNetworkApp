@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{ view.object|default_if_none:"Upload New Image" }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto;">
+    <h2 style="text-align: center;">{{ view.object|default_if_none:"Upload New Image" }}</h2>
+
+    <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; background: #f9f9f9;">
+        {% csrf_token %}
+        <label>Operator:</label>
+        {{ form.operator }}
+
+        <label>Image:</label>
+        {{ form.image }}
+
+        <label>Caption (optional):</label>
+        {{ form.caption }}
+
+        <button type="submit" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">
+            Save
+        </button>
+    </form>
+
+    <div style="margin-top: 15px;">
+        <a href="{% url 'gallery-list' %}">⬅ Back to Gallery</a>
+    </div>
+</div>
+{% endblock %}

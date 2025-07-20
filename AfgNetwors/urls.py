@@ -1,5 +1,21 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+from rest_framework.routers import DefaultRouter
+from .views import (
+    OperatorViewSet,
+    ServicePackageViewSet,
+    PackageViewSet,
+    PackageDetailViewSet,
+    GalleryViewSet
+)
+
+# 🌐 Router مخصوص ViewSetها
+router = DefaultRouter()
+router.register(r'operators', OperatorViewSet)
+router.register(r'service-packages', ServicePackageViewSet)
+router.register(r'packages', PackageViewSet)
+router.register(r'package-details', PackageDetailViewSet)
+router.register(r'galleries', GalleryViewSet)
 
 urlpatterns = [
     # Operator URLs
@@ -81,6 +97,10 @@ urlpatterns = [
     path('gallery/<int:pk>/', views.GalleryDetail.as_view(), name='gallery-detail'),
     path('gallery/<int:pk>/edit/', views.GalleryUpdate.as_view(), name='gallery-edit'),
     path('gallery/<int:pk>/delete/', views.GalleryDelete.as_view(), name='gallery-delete'),
+
+
+    path('api/', include(router.urls)),  # تمام APIها تحت /api/ در دسترس‌اند
+
 
 
 ]

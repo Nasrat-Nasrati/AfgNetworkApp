@@ -11,6 +11,17 @@ from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
 
+from rest_framework import viewsets
+
+from .serializers import (
+    OperatorSerializer,
+    ServicePackageSerializer,
+    PackageSerializer,
+    PackageDetailSerializer,
+    GallerySerializer
+)
+
+
 # ===============================
 # Operator Views
 # ===============================
@@ -357,3 +368,48 @@ class GalleryDelete(DeleteView):
     model = Gallery
     template_name = 'AfgNetwors/gallery_confirm_delete.html'
     success_url = reverse_lazy('gallery-list')
+
+
+
+# all views related to the serializer or api 
+# 📦 API ViewSet برای Operator
+class OperatorViewSet(viewsets.ModelViewSet):
+    """
+    API برای لیست کردن، ایجاد، بروزرسانی و حذف اپراتورها
+    """
+    queryset = Operator.objects.all()
+    serializer_class = OperatorSerializer
+
+
+# 📦 API ViewSet برای ServicePackage
+class ServicePackageViewSet(viewsets.ModelViewSet):
+    """
+    API برای لیست کردن، ایجاد، بروزرسانی و حذف سرویس‌پکیج‌ها (برای هر اپراتور)
+    """
+    queryset = ServicePackage.objects.all()
+    serializer_class = ServicePackageSerializer
+
+
+# 📦 API ViewSet برای Package
+class PackageViewSet(viewsets.ModelViewSet):
+    """
+    API برای لیست کردن، ایجاد، بروزرسانی و حذف پکیج‌ها
+    """
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+
+
+# 📦 API ViewSet برای PackageDetail
+class PackageDetailViewSet(viewsets.ModelViewSet):
+    queryset = PackageDetailModel.objects.all()  # ✅ درست
+    serializer_class = PackageDetailSerializer
+
+
+
+# 🖼️ API ViewSet برای Gallery
+class GalleryViewSet(viewsets.ModelViewSet):
+    """
+    API برای تصاویر گالری مرتبط با اپراتورها
+    """
+    queryset = Gallery.objects.all()
+    serializer_class = GallerySerializer

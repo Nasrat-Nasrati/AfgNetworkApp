@@ -25,9 +25,12 @@ INSTALLED_APPS = [
     'AfgNetwors',
     'rest_framework',
     'widget_tweaks',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,4 +124,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     # سایر تنظیمات
 }
+
+# settings.py
+CORS_ALLOW_ALL_ORIGINS = True  # ⚠ فقط برای توسعه، در حالت production این خطرناک است
 

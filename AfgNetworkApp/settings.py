@@ -60,6 +60,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AfgNetworkApp.wsgi.application'
 
 
+
+
 # Database
 DATABASES = {
     'default': {

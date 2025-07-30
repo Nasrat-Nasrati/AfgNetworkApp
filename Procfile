@@ -1,1 +1,3 @@
-web: gunicorn AfgNetwrokapp.wsgi
+web: gunicorn AfgNetworkApp.wsgi
+
+

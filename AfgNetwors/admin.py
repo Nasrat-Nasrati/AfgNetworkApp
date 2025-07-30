@@ -27,10 +27,9 @@ class PackageAdmin(admin.ModelAdmin):
 class PackageDetailAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'price', 'package', 'activation_code', 'deactivation_code',
-        'check_balance_code', 'code', 'button_active', 'button_deactive', 'button_check_blance'
-    )
+        'check_balance_code')
     list_filter = ('package',)
-    search_fields = ('name', 'activation_code', 'deactivation_code', 'check_balance_code', 'code')
+    search_fields = ('name', 'activation_code', 'deactivation_code', 'check_balance_code')
 
 
 @admin.register(Gallery)

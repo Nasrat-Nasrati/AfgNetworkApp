@@ -35,12 +35,7 @@ class PackageDetail(models.Model):
     activation_code = models.CharField(max_length=50,null=True, blank=True)
     deactivation_code = models.CharField(max_length=50,null=True, blank=True)
     check_balance_code = models.CharField(max_length=50,null=True, blank=True)
-    code = models.CharField(max_length=50)   # مثلاً: "*122#"
-    description = models.TextField(blank=True, null=True)  # توضیحات (اختیاری)
-    button_active = models.CharField(max_length=50, default="Active")
-    button_deactive= models.CharField(max_length=50,default="Deactive")
-    button_check_blance = models.CharField(max_length=50,default="Check blance")  # متن دکمه، مثل "قرضه" یا "افزودن"
-    
+   
     def __str__(self):
         return f"{self.name} - {self.price} AFN"
     

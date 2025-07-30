@@ -120,9 +120,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # # used for showing data to the api 
-# ALLOWED_HOSTS = ['172.16.3.236', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['172.16.3.236', 'localhost', '127.0.0.1']
 
-ALLOWED_HOSTS = ['afgnetworkapp.onrender.com', 'www.afgnetworkapp.onrender.com']
+# ALLOWED_HOSTS = ['afgnetworkapp.onrender.com', 'www.afgnetworkapp.onrender.com']
 
 
 

@@ -1,2 +1,2 @@
-web: gunicorn AfgNetwrokapp.wsgi
+gunicorn AfgNetwrokapp.wsgi
 

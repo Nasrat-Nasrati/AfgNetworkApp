@@ -11,11 +11,6 @@
         <p><strong>Activation Code:</strong> {{ object.activation_code }}</p>
         <p><strong>Deactivation Code:</strong> {{ object.deactivation_code }}</p>
         <p><strong>Check Balance Code:</strong> {{ object.check_balance_code }}</p>
-        <p><strong>USSD Code:</strong> {{ object.code }}</p>
-        <p><strong>Description:</strong> {{ object.description }}</p>
-        <p><strong>Activation Button Text:</strong> {{ object.button_active }}</p>
-        <p><strong>Deactivation Button Text:</strong> {{ object.button_deactive }}</p>
-        <p><strong>Check Balance Button Text:</strong> {{ object.button_check_blance }}</p>
     </div>
 
     <hr style="margin: 30px 0; border-top: 1px solid #ccc;">
@@ -28,9 +23,9 @@
     </div>
 
     <div class="package-actions" style="margin-top: 25px;">
-    <a class="btn btn-back" href="{% url 'bandel-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}">Back to Bundle List</a>
-    <a class="btn btn-back" href="{% url 'package-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id %}">Back to Packages</a>
-</div>
+        <a class="btn btn-back" href="{% url 'bandel-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id package_id=object.package.id %}">Back to Bundle List</a>
+        <a class="btn btn-back" href="{% url 'package-list' operator_id=object.package.service_package.operator.id service_package_id=object.package.service_package.id %}">Back to Packages</a>
+    </div>
 
 </div>
 {% endblock %}

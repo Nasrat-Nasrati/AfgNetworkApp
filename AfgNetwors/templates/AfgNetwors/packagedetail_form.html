@@ -23,36 +23,38 @@
     <form method="post" class="space-y-4">
         {% csrf_token %}
 
+        {# فقط فیلدهای معتبر مدل را نمایش بده #}
         {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-600 mb-1">
-                    {{ field.label }}
-                    {% if field.field.required %}
-                        <span class="text-red-500">*</span>
+            {% if field.name in "name price activation_code deactivation_code check_balance_code".split %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-600 mb-1">
+                        {{ field.label }}
+                        {% if field.field.required %}
+                            <span class="text-red-500">*</span>
+                        {% endif %}
+                    </label>
+
+                    {% render_field field class="form-control w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+
+                    {% if field.help_text %}
+                        <small class="text-gray-500">{{ field.help_text }}</small>
                     {% endif %}
-                </label>
 
-                {% render_field field class="form-control w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" %}
-
-                {% if field.help_text %}
-                    <small class="text-gray-500">{{ field.help_text }}</small>
-                {% endif %}
-
-                {% for error in field.errors %}
-                    <p class="text-red-500 text-sm">{{ error }}</p>
-                {% endfor %}
-            </div>
+                    {% for error in field.errors %}
+                        <p class="text-red-500 text-sm">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endfor %}
 
         <div class="flex justify-between pt-4">
             <button type="submit" class="btn btn-primary bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
                 Save
             </button>
-           <a href="{% url 'bandel-list' operator_id=operator_id service_package_id=service_package_id package_id=package_id %}"
-   class="btn btn-secondary bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded">
-    Back to list
-</a>
-
+            <a href="{% url 'bandel-list' operator_id=operator_id service_package_id=service_package_id package_id=package_id %}"
+               class="btn btn-secondary bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded">
+                Back to list
+            </a>
         </div>
     </form>
 </div>

@@ -250,8 +250,13 @@ class PackageDetailList(ListView):
 
 class PackageDetailCreate(CreateView):
     model = PackageDetailModel
-    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code',
-              'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
+    fields = [
+    'name',
+    'price',
+    'activation_code',
+    'deactivation_code',
+    'check_balance_code',]
+
     template_name = 'AfgNetwors/packagedetail_form.html'
 
     def dispatch(self, request, *args, **kwargs):
@@ -292,8 +297,13 @@ class PackageDetailView(DetailView):
 
 class PackageDetailUpdate(UpdateView):
     model = PackageDetailModel
-    fields = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code',
-              'code', 'description', 'button_active', 'button_deactive', 'button_check_blance']
+    fields = [
+    'name',
+    'price',
+    'activation_code',
+    'deactivation_code',
+    'check_balance_code',]
+
     template_name = 'AfgNetwors/packagedetail_form.html'
 
     def get_context_data(self, **kwargs):

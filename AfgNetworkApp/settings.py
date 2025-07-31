@@ -123,7 +123,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ALLOWED_HOSTS = ['172.16.3.236', 'localhost', '127.0.0.1']
 
 #this is the python anywhere 
-ALLOWED_HOSTS = ['nasrat.pythonanywhere.com', 'www.nasrat.pythonanywhere.com']
+ALLOWED_HOSTS = ['nasrat.pythonanywhere.com', 'www.nasrat.pythonanywhere.com','localhost']
 
 
 # ALLOWED_HOSTS = ['afgnetworkapp.onrender.com', 'www.afgnetworkapp.onrender.com']

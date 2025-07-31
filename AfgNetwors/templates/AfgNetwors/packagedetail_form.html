@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load widget_tweaks %}
 
 {% block title %}
@@ -23,9 +22,8 @@
     <form method="post" class="space-y-4">
         {% csrf_token %}
 
-        {# فقط فیلدهای معتبر مدل را نمایش بده #}
         {% for field in form %}
-            {% if field.name in "name price activation_code deactivation_code check_balance_code".split %}
+            {% if field.name in valid_fields %}
                 <div class="form-group">
                     <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-600 mb-1">
                         {{ field.label }}

@@ -272,7 +272,9 @@ class PackageDetailCreate(CreateView):
         context['operator_id'] = self.kwargs['operator_id']
         context['service_package_id'] = self.kwargs['service_package_id']
         context['package_id'] = self.kwargs['package_id']
+        context['valid_fields'] = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code']
         return context
+
 
     def get_success_url(self):
         # اینجا نام url رو اصلاح کردیم به bandel-list
@@ -311,7 +313,9 @@ class PackageDetailUpdate(UpdateView):
         context['operator_id'] = self.kwargs['operator_id']
         context['service_package_id'] = self.kwargs['service_package_id']
         context['package_id'] = self.kwargs['package_id']
+        context['valid_fields'] = ['name', 'price', 'activation_code', 'deactivation_code', 'check_balance_code']
         return context
+
 
     def get_success_url(self):
         return reverse_lazy('bandel-detail', kwargs={
